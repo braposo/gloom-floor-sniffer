@@ -1,0 +1,13 @@
+{
+  "name": "glooms",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "playwright": "^1.15.2",
+    "ts-node": "^10.3.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.4.4"
+  }
+}
