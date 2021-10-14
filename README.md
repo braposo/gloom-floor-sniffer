@@ -1,6 +1,6 @@
 # gloom-floor-sniffer
 
-Gets bottom 100 Glooms from Solanart.
+Gets bottom 100 Glooms from Solanart: https://solanart.io/collections/gloompunk
 
 1. Install dependencies
 
