@@ -215,4 +215,4 @@ async function fetchGlooms(number: number = 10) {
   process.exit(1);
 }
 
-fetchGlooms(100);
+fetchGlooms(300);
