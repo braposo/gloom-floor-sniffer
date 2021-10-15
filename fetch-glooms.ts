@@ -29,6 +29,7 @@ function createCSV(items: Array<Data>) {
         "headAccessory",
         "faceAccessory",
         "glasses",
+        "url",
       ];
       return [
         header.join(","), // header row first
@@ -67,6 +68,7 @@ type Data =
       number: string;
       price: string;
       rank?: string;
+      url: string;
     } & Traits)
   | undefined;
 
@@ -111,8 +113,9 @@ async function fetchGlooms(number: number = 10) {
 
       if (match) {
         const [_, number, price] = match;
+        const url = `https://gloom-rarity-page.vercel.app/punk/${number}`;
 
-        return { number, price };
+        return { number, price, url };
       }
     }
   });
@@ -136,7 +139,7 @@ async function fetchGlooms(number: number = 10) {
       inFlight = true;
 
       if (gloom) {
-        const { number, price } = gloom;
+        const { number, price, url } = gloom;
 
         try {
           const newPage = await context.newPage();
@@ -180,7 +183,7 @@ async function fetchGlooms(number: number = 10) {
             }
           }
 
-          resolve({ number, price, rank, ...traits });
+          resolve({ number, price, rank, url, ...traits });
         } catch (e) {
           reject(e);
         }
@@ -198,10 +201,6 @@ async function fetchGlooms(number: number = 10) {
         )
     )
   );
-
-  //   console.log(
-  //     glooms.sort((a, b) => parseInt(a?.rank || "") - parseInt(b?.rank || ""))
-  //   );
 
   console.log("Finished... happy shopping!");
   await browser.close();
